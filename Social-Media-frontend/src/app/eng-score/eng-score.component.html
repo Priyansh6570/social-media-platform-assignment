@@ -1,0 +1,16 @@
+<div *ngIf="isLoading">Loading...</div>
+<h1>User Engagement Score</h1>
+<table *ngIf="!isLoading" class="table">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Engagement Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let userScore of userScores">
+      <td>{{ userScore.userName }}</td>
+      <td>{{ userScore.score }}</td>
+    </tr>
+  </tbody>
+</table>

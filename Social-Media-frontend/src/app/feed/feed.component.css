@@ -1,0 +1,27 @@
+.feed-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .post-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-right: 10px;
+  }
+
+  button:disabled {
+    background-color: #aaaaaafa;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  textarea {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,33 @@
+<div class="feed-content">
+  <h1>Feed</h1>
+
+  <div *ngFor="let post of posts" class="post-container">
+    <p><strong>{{ post.userName }}</strong> posted:</p>
+    <p style="background-color: ghostwhite; padding: 20px 0 20px 10px;">{{ post.content }}</p>
+
+    <div>
+      <button (click)="likePost(post.postID)">Like ({{ post.likeCount }})</button>
+      <button (click)="toggleComments(post)">Comments ({{ post.commentCount }})</button>
+    </div>
+
+    <div *ngIf="post.showComments">
+      <ul>
+        <li *ngFor="let comment of post.comments">
+          <strong>{{ comment.userName }}:</strong>
+          {{ comment.content }}
+          <button *ngIf="selectedUser && comment.userID === selectedUser.userID" style="scale: 0.9;" (click)="editComment(comment)">
+            Edit
+          </button>
+          <button *ngIf="selectedUser && comment.userID === selectedUser.userID" style="scale: 0.9;" (click)="deleteComment(comment, post)">
+            Delete
+          </button>
+        </li>
+      </ul>
+
+      <textarea [(ngModel)]="newCommentContent" placeholder="Add new comment"></textarea>
+      <br>
+      <span *ngIf="containsBannedWords(newCommentContent)" style="color:red;">Your comment contains banned words.</span>
+      <button [disabled]="containsBannedWords(newCommentContent)" (click)="addComment(post.postID)">Add Comment</button>
+    </div>
+  </div>
+</div>
